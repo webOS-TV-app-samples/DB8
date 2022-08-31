@@ -1,89 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>Sample App for DB8 - user</title>
-	<style type="text/css">
-
-	* {
-		font-size: 20px;
-	}
-
-	body {
-    	background: #dddddd;
-	}
-
-	h1 {
-		margin: 30px;
-	}
-
-	button {
-		padding: 3px;
-		width: 150px;
-	}
-
-	.control {
-		margin-left: 30px;
-		float: left;
-	}
-
-	#log {
-		overflow: auto;
-		width: 550px;
-		height: 350px;
-		border: 1px solid black;
-		padding: 10px;
-		line-height: 150%;
-	}
-
-	#db {
-		float: right;
-		overflow: auto;
-		width: 550px;
-		height: 560px;
-		border: 1px solid black;
-		padding: 10px;
-		margin: 20px 30px 0 0;
-		text-align: left;
-		line-height: 150%;
-	}
-	
-	</style>
-	<script src="webOSTVjs-1.2.3/webOSTV.js" charset="utf-8"></script>
-	<script src="webOSTVjs-1.2.3/webOSTV-dev.js" charset="utf-8"></script>
-	<script src="db8-user.js" charset="utf-8"></script>
-	<script type="text/javascript">
-		window.addEventListener("load", function () { initPage() }, false);
-	</script>
-</head>
-<body>
-	<h1>Sample App for DB8 - user</h1>
-
-	<div id="container">
-		<div class="control">
-			<p>
-				<button id="put">put</button>
-				<button id="del">del</button>
-				<button id="merge">merge</button>
-			</p>
-			<p>
-				<button id="find0">find[0]</button>
-				<button id="find1">find[1]</button>
-				<button id="find2">find[2]</button>
-			</p>
-			<p>
-				<button id="reserveIds">reserveIds</button>
-			</p>
-			<p>
-				<button id="putWithId">putWithId</button>
-				<button id="delWithId">delWithId</button>
-				<button id="get">get</button>
-			</p>
-			<div id="log"></div>
-		</div>
-	</div>
-		<div id="db"></div>
-	</div>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Sample App for webOS TV DB8 - user</title>
+    <script src="lib/webOSTVjs-1.2.4/webOSTV.js"></script>
+    <script src="lib/webOSTVjs-1.2.4/webOSTV-dev.js"></script>
+    <script src="js/db8-user.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <h1>Sample App for DB8 - user</h1>
+    <div id="container">
+      <div class="control">
+        <p>
+          <button id="put">put</button>
+          <button id="del">del</button>
+          <button id="merge">merge</button>
+        </p>
+        <p>
+          <button id="find0">find[0]</button>
+          <button id="find1">find[1]</button>
+          <button id="find2">find[2]</button>
+        </p>
+        <p>
+          <button id="reserveIds">reserveIds</button>
+        </p>
+        <p>
+          <button id="putWithId">putWithId</button>
+          <button id="delWithId">delWithId</button>
+          <button id="get">get</button>
+        </p>
+        <div id="log"></div>
+      </div>
+    </div>
+    <div id="db"></div>
+  </body>
 </html>

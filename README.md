@@ -1,8 +1,6 @@
 # DB8
 
-DB8 is a storage method of webOS TV. DB8 is designed to meet the needs of robust, high-performance apps. DB8 is a
-service available on Luna Bus, and interfaces to an embedded JSON database. For more information about DB8, refer to DB8
-Basics.
+DB8 is a storage method of webOS TV. DB8 is designed to meet the needs of robust, high-performance apps. DB8 is a service available on Luna Bus, and interfaces to an embedded JSON database. For more information about DB8, refer to DB8 Basics.
 
 ## Getting Started
 
@@ -13,9 +11,9 @@ a [kind](https://webostv.developer.lge.com/develop/references/database#kind)
 using [putKind()](https://webostv.developer.lge.com/develop/references/database#putkind) method first.
 The following code sample shows how to create a kind using the method.
 
-- private parameter: The private parameter is available on webOS TV 3.0 or later. If the private parameter is true, when
+- `private`: The private parameter is available on webOS TV 3.0 or later. If the private parameter is true, when
   an app is uninstalled, the kind is also removed.
-- schema parameter: The schema parameter is optional. If you define the schema, you must put the valid data that
+- `schema`: The schema parameter is optional. If you define the schema, you must put the valid data that
   conforms to the schema format. For more information about the schema, refer to
   the [Schema Enforcement](https://webostv.developer.lge.com/develop/guides/db8-usage#schema-enforcement) page.
 
@@ -140,12 +138,10 @@ webOS.service.request("luna://com.palm.db", {
     ],
   },
   onSuccess: function (res) {
-    printLog("[putPermissions] onSuccess");
+    console.log("[putPermissions] onSuccess");
   },
   onFailure: function (res) {
-    printLog("[putPermissions] onFailure");
-    printLog("(" + res.errorCode + ") " + res.errorText);
-    return;
+    console.log("[putPermissions] onFailure:", res.errorCode, res.errorText);
   },
 });
 ```
@@ -154,11 +150,9 @@ webOS.service.request("luna://com.palm.db", {
 
 After reserving data IDs
 using [reserveIds()](https://webostv.developer.lge.com/develop/references/media-database#reserveids) method,
-you can put, get, delete data by the IDs. The following example shows how to reserve IDs and get data by IDs.
+you can put, get, delete data by the IDs. The following example shows how to reserve IDs.
 
 ```javascript
-let ids = [];
-
 function reserveIds(count) {
   webOS.service.request("luna://com.palm.db", {
     method: "reserveIds",
@@ -168,32 +162,11 @@ function reserveIds(count) {
     onSuccess: function (res) {
       let result = res.ids;
       console.log("[reserveIds] onSuccess:", result);
-      ids = result;
-      // do something with ids array
+      return result;
     },
     onFailure: function (res) {
       console.log("[reserveIds] onFailure:", res.errorCode, res.errorText);
-      // do somethhing on failure
-    },
-  });
-}
-```
-
-```javascript
-function get(ids) {
-  webOS.service.request("luna://com.palm.db", {
-    method: "get",
-    parameters: {
-      ids: ids,
-    },
-    onSuccess: function (res) {
-      let result = res.results;
-      console.log("[get] onSuccess:", result);
-      // do something with result
-    },
-    onFailure: function (res) {
-      console.log("[get] onFailure:", res.errorCode, res.errorText);
-      // do something on failure
+      return [];
     },
   });
 }
@@ -201,21 +174,15 @@ function get(ids) {
 
 ## Result in the webOS TV
 
-You can install sample apps and see the results in the webOS TV or webOS TV emulator as below image.
+You can install sample apps and see the results in the webOS TV or webOS TV Simulator as below image.
 
-![com.sample.db.owner_put.JPG](https://webostv.developer.lge.com/download_file/view_inline/12663/)
-
-![com.sample.db.owner_find.JPG](https://webostv.developer.lge.com/download_file/view_inline/12662/)
-
-![com.sample.db.user_perm.JPG](https://webostv.developer.lge.com/download_file/view_inline/12660/)
-
-![com.sample.db.user_get.JPG](https://webostv.developer.lge.com/download_file/view_inline/12661/)
+![com.sample.db.owner.PNG](screenshots/com.sample.db.owner.PNG)
+![com.sample.db.user.PNG](screenshots/com.sample.db.user.PNG)
 
 ## Do's and Don'ts
 
-- Do test these sample apps on your webOS TV or webOS TV emulator.
+- **Do** test these sample apps on your webOS TV or webOS TV Simulator.
 
-- Do update the webOSTV.js library when the new version is released.
+- **Do** update the webOSTV.js library when the new version is released.
 
-- The 'com.sample.db.user' sample app does not work properly if the 'com.sample.db.owner' sample app has not created a
-  kind or granted the kind's permission.
+- The 'com.sample.db.user' sample app does not work properly if the 'com.sample.db.owner' sample app has not created a kind or granted the kind's permission.
